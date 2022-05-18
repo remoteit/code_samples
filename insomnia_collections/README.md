@@ -14,7 +14,7 @@ For more information on GraphQL, learn on the official GraphQL website [here](ht
 
 [Credentials setup](https://link.remote.it/docs/credential-generation)
 [Insomnia setup](https://link.remote.it/docs/insomnia)
-[Importthe Insomnia Collection](https://docs.insomnia.rest/insomnia/import-export-data) - Once you have downloaded the collection file you would like to work with, you can then import it into Insomnia. The Insomnia UI may change based on their releases, please refer to their documentation.
+[Import the Insomnia Collection](https://docs.insomnia.rest/insomnia/import-export-data) - Once you have downloaded the collection file you would like to work with, you can then import it into Insomnia. The Insomnia UI may change based on their releases, please refer to their documentation.
 
 ## Using the collections
 
