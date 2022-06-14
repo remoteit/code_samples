@@ -1,16 +1,17 @@
 const Sequelize = require("sequelize");
 const config = require("./config");
+const cKey = "raw-loader!~/PemKeys/DigiCertGlobalRootCA.crt.pem";
 
 var db = {};
 
 const sequelize = new Sequelize(
-  config.MYSQL_DB_NAME,
-  config.MYSQL_USERNAME,
-  config.MYSQL_PASSWORD,
+  config.DB_NAME,
+  config.DB_USERNAME,
+  config.DB_PASSWORD,
   {
-    host: config.MYSQL_URL,
-    port: config.MYSQL_PORT,
-    dialect: "mysql",
+    host: config.DB_URL,
+    port: config.DB_PORT,
+    dialect: config.DB_DIALECT,
     define: {
       freezeTableName: true,
     },
