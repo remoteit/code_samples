@@ -1,0 +1,7 @@
+# macOS files
+*.DS_Store
+
+**/.env
+**/.hg
+**/node_modules
+**/package-lock.json
