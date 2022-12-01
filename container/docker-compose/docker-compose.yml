@@ -1,0 +1,20 @@
+version: "3.9"  # optional since v1.27.0
+# Set environment variables in .env file:
+# CONTAINER_NAME
+# R3_REGISTRATION_CODE
+services:
+  remoteit-agent:
+    restart: unless-stopped
+    image: remoteit/remoteit-agent:latest
+    container_name: ${CONTAINER_NAME}
+    hostname: ${CONTAINER_NAME}
+    depends_on:
+    - echoserver
+    volumes:
+    - ./r3configs/${CONTAINER_NAME}:/etc/remoteit
+    environment:
+    - R3_REGISTRATION_CODE=${R3_REGISTRATION_CODE}
+  echoserver:
+    image: ealen/echo-server
+    container_name: echoserver
+    hostname: echoserver
