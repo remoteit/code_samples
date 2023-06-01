@@ -2,7 +2,7 @@
 
 This is a script to upgrade the legacy version of the Remote.It CLI.
 
-For Windows: upgrade_cli.bat
+For Windows: upgrade_cli.bat  
 For Linux: N/A (prepared in the near future)
 
 ## Supported versions
@@ -11,7 +11,7 @@ Legacy versions supported by this script are:
 
 v1.4.x, v1.5.x, v1.6.x, v1.7.x, v1.8.x, v2.0.x
 
-The target of updated version is defined by the variable "VERSION".
+The target of updated version is defined by the variable "VERSION".  
 The currently tested and supported version is v3.0.33.
 
 ## Supported OS
