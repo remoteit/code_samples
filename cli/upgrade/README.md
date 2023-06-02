@@ -7,7 +7,7 @@ For Linux: N/A (prepared in the near future)
 
 ## Supported versions
 
-Legacy versions supported by this script are:
+Legacy versions of Remote.It CLI supported by this script are:
 
 v1.4.x, v1.5.x, v1.6.x, v1.7.x, v1.8.x, v2.0.x
 
