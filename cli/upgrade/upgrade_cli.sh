@@ -30,6 +30,26 @@ rollback() {
     $SUDO remoteit agent install 
 }
 
+# Check for a force flag
+force_flag=0
+while getopts :f-: OPT; do
+  case "$OPT" in
+    f) force_flag=1
+       ;;
+    -) case "${OPTARG}" in
+         force) force_flag=1
+                ;;
+         :|\?) echo "Unknown option"
+               exit 1
+               ;;
+       esac
+       ;;
+    :|\?) echo "Unknown option"
+          exit 1
+          ;;
+  esac
+done
+
 echo "----------------------------------------------"
 echo "Upgrade Remote.It CLI."
 echo "Older versions to be upgraded include:"
@@ -136,30 +156,32 @@ fi
 chmod +x "$SCRIPT_DIR/r3_cli_upgrade/tmp/remoteit"
 echo "Download complete."
 
-# Alerts you whether or not to proceed with this upgrade process.
-echo
-echo "---------------------------------------------------------"
-echo "It will stop the service of the old Remote.It CLI."
-echo "This takes the target device offline and also disconnects"
-echo "the initiator connection if it has one."
-echo "---------------------------------------------------------"
-
-# Check if you want to continue the process, if Yes, continue processing.
-while true
-do
+if [ $force_flag = 0 ]; then
+  # If there is no -f flag, Alerts you whether or not to proceed with this upgrade process.
   echo
-  echo "Continue? [Y/n]"
-  read val
-  case "$val" in
-    Y|y)
-      break
-      ;;
-    N|n)
-      echo "N or n was entered. Stopping upgrading process....."
-      exit 1
-      ;;
-  esac
-done
+  echo "---------------------------------------------------------"
+  echo "It will stop the service of the old Remote.It CLI."
+  echo "This takes the target device offline and also disconnects"
+  echo "the initiator connection if it has one."
+  echo "---------------------------------------------------------"
+
+  # Check if you want to continue the process, if Yes, continue processing.
+  while true
+  do
+    echo
+    echo "Continue? [Y/n]"
+    read val
+    case "$val" in
+      Y|y)
+        break
+        ;;
+      N|n)
+        echo "N or n was entered. Stopping upgrading process....."
+        exit 1
+        ;;
+    esac
+  done
+fi
 
 # Stop the it.remote.cli service.
 echo
