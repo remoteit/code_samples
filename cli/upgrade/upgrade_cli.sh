@@ -11,7 +11,7 @@ LOG_DIR="/var/log/remoteit"
 SCRIPT_DIR="$(cd $(dirname $0); pwd)"
 
 # Upgrade to
-VERSION="v3.0.33"
+VERSION="latest"
 
 # Below is the rollback process in case the latest CLI did not start. Restore from a backed up file.
 rollback() {

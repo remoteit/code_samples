@@ -22,7 +22,7 @@ set CONFIG="C:\ProgramData\remoteit\config.json"
 set LOG_DIR="C:\ProgramData\remoteit\log"
 
 rem Upgrade to
-set VERSION=v3.0.33
+set VERSION=latest
 
 rem Check for the existence of each file and directory.
 echo.
