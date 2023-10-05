@@ -42,4 +42,5 @@ support@remote.it
 3. Then execute this script with administrator or root privileges.
    Note: for Linux, run the following special command.
          $ sudo ./upgrade_cli.sh -f &
+   
    The device will go offline, but then come back online automatically.
