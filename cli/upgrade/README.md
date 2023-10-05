@@ -31,5 +31,15 @@ support@remote.it
 
 ## How to use
 
+[Local Update]
 1. Copy the upgrade script to a directory of your choice.
 2. Then execute this script with administrator or root privileges.
+
+[Remote Upadate]
+1. Connect remotely to the device where the old CLI is installed using the remote.it connection.
+   Windows:RDP, Linux:SSH
+2. Copy the upgrade script to a directory of your choice on the device which has installed old CLI.
+3. Then execute this script with administrator or root privileges.
+   Note: for Linux, run the following special command.
+         $ sudo ./upgrade_cli.sh -f &
+   The device will go offline, but then come back online automatically.
