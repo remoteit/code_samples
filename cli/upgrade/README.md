@@ -43,4 +43,4 @@ support@remote.it
    Note: for Linux, run the following special command.
          $ sudo ./upgrade_cli.sh -f &
    
-   The device will go offline, but then come back online automatically.
+   The device will go offline and remote.it connection is disconnected, but then come back online automatically.
