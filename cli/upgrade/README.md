@@ -9,10 +9,10 @@ For Linux: upgrade_cli.sh
 
 Legacy versions of Remote.It CLI supported by this script are:
 
-v1.4.x, v1.5.x, v1.6.x, v1.7.x, v1.8.x, v2.0.x
+v1.4.x, v1.5.x, v1.6.x, v1.7.x, v1.8.x, v2.0.x, v3.0.x
 
 The target of updated version is defined by the variable "VERSION".  
-The currently tested and supported version is v3.0.33.
+The currently tested and supported upgrade target version is v3.0.38.
 
 ## Supported OS (especialy Windows)
 
@@ -32,15 +32,15 @@ support@remote.it
 ## How to use
 
 [Local Update]
-1. Copy the upgrade script to a directory of your choice.
+1. Copy the upgrade script to a directory of your choice and grant execution permission.
 2. Then execute this script with administrator or root privileges.
 
 [Remote Upadate]
 1. Connect remotely to the device where the old CLI is installed using the remote.it connection.
    Windows:RDP, Linux:SSH
-2. Copy the upgrade script to a directory of your choice on the device which has installed old CLI.
+2. Copy the upgrade script to a directory of your choice on the device which has installed old CLI and grant execution permission.
 3. Then execute this script with administrator or root privileges.
    Note: for Linux, run the following special command.
-         $ sudo ./upgrade_cli.sh -f &
+         $ nohup sudo ./upgrade_cli.sh -f &
    
    The device will go offline and remote.it connection is disconnected, but then come back online automatically.

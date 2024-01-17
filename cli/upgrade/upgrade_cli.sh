@@ -10,10 +10,10 @@ CONFIG="/etc/remoteit/config.json"
 LOG_DIR="/var/log/remoteit"
 SCRIPT_DIR="$(cd $(dirname $0); pwd)"
 
-# Upgrade to
+# Upgrade to. e.g. "latest" "v3.0.38".
 VERSION="latest"
 
-# Below is the rollback process in case the latest CLI did not start. Restore from a backed up file.
+# Below is the rollback process in case the downloaded CLI did not start. Restore from a backed up file.
 rollback() {
     echo 
     echo "Rollbacking....."
@@ -50,11 +50,11 @@ while getopts :f-: OPT; do
   esac
 done
 
-echo "----------------------------------------------"
+echo "------------------------------------------------------"
 echo "Upgrade Remote.It CLI."
 echo "Older versions to be upgraded include:"
-echo "v1.4.x, v1.5.x, v1.6.x, v1.7.x, v1.8.x, v2.0.x"
-echo "----------------------------------------------"
+echo "v1.4.x, v1.5.x, v1.6.x, v1.7.x, v1.8.x, v2.0.x, v3.0.x"
+echo "------------------------------------------------------"
 
 # Detection of whether the user executing the shell is root.
 SUDO=
@@ -68,7 +68,7 @@ echo "Checking if the binary file and log directory exists in the proper locatio
 i=
 for i in $CLI $BIN_DIR $CONNECTD $MUXER $DEMUXER $CONFIG $LOG_DIR
 do
-  if [ ! -e $i ]; then
+  if [ ! -e "$i" ]; then
     echo "$i is not exist."
     echo "Terminates processing of upgraging."
     echo "Please contact support."
@@ -86,15 +86,15 @@ sleep 3
 INSTALLED_VERSION=$($SUDO remoteit version)
 echo "Current installed version is Remote.It CLI v$INSTALLED_VERSION"
 i=
-for i in v1.4 v1.5 v1.6 v1.7 v1.8 v2.0
+for i in v1.4 v1.5 v1.6 v1.7 v1.8 v2.0 v3.0
 do
-  echo v$INSTALLED_VERSION | grep $i >/dev/null
+  echo "v$INSTALLED_VERSION" | grep $i >/dev/null
   if [ $? -eq 0 ]; then
     echo "This is the version to be upgraded."
     break
   else
-    if [ $i = v2.0 ]; then
-      echo "This is not the version to be upgraded."
+    if [ $i = v3.0 ]; then
+      echo "Upgrades from this version are not supported."
       echo "Please contact support."
       echo "support@remote.it"
       exit 1
@@ -142,19 +142,32 @@ else
   exit 1
 fi
 
-# Download the latest CLI.
+# Download the CLI specified by VERSION.
 echo
 echo Downloading remoteit CLI $VERSION.....
 curl -Lo "$SCRIPT_DIR/r3_cli_upgrade/tmp/remoteit" "https://downloads.remote.it/cli/$VERSION/remoteit.$SUFFIX-linux"
 if [ $? -ne 0 ]; then
   echo
-  echo "Download of the latest Remote.It CLI failed due to some problem."
+  echo "Download of the Remote.It CLI $VERSION failed due to some problem."
   echo "Please contact support."
   echo "support@remote.it"
   exit 1
 fi
 chmod +x "$SCRIPT_DIR/r3_cli_upgrade/tmp/remoteit"
 echo "Download complete."
+
+# Compare the installed version with the downloaded version.
+DOWNLOAD_VERSION=$($SUDO "$SCRIPT_DIR/r3_cli_upgrade/tmp/remoteit" version)
+echo
+echo "Downloaded remoteit CLI is v$DOWNLOAD_VERSION".
+if [ "$INSTALLED_VERSION" = "$DOWNLOAD_VERSION" ]; then
+  echo "The installed and downloaded versions are the same."
+  echo "No need to update."
+  exit 0
+elif [ "$DOWNLOAD_VERSION" = "$(echo "$INSTALLED_VERSION" "$DOWNLOAD_VERSION" |tr ' ' '\n' |sort -V |head -n 1)" ]; then  
+  echo "Downgrades are not supported."
+  exit 1  
+fi
 
 if [ $force_flag = 0 ]; then
   # If there is no -f flag, Alerts you whether or not to proceed with this upgrade process.
@@ -207,10 +220,10 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-# Copy the latest CLI to bin dir.
+# Copy the donwloaded CLI to bin dir.
 $SUDO cp -f "$SCRIPT_DIR/r3_cli_upgrade/tmp/remoteit" $BIN_DIR
 
-# Install and start the latest CLI.
+# Install and start the downloaded CLI.
 echo
 echo "Installing the new Remote.It CLI....."
 cd $BIN_DIR
