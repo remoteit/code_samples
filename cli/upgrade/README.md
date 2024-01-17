@@ -40,7 +40,7 @@ support@remote.it
    Windows:RDP, Linux:SSH
 2. Copy the upgrade script to a directory of your choice on the device which has installed old CLI and grant execution permission.
 3. Then execute this script with administrator or root privileges.
-   Note: for Linux, run the following special command.
-         $ nohup sudo ./upgrade_cli.sh -f &
+   Note: for Linux, run the following special command.  
+   `$ nohup sudo ./upgrade_cli.sh -f &`
    
    The device will go offline and remote.it connection is disconnected, but then come back online automatically.
