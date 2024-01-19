@@ -9,7 +9,7 @@ For Linux: upgrade_cli.sh
 
 Legacy versions of Remote.It CLI supported by this script are:
 
-v1.4.x, v1.5.x, v1.6.x, v1.7.x, v1.8.x, v2.0.x, v3.0.x
+v1.4.x, v1.5.x, v1.6.x, v1.7.x, v1.8.x, v2.0.x, v3.0.x(for Linux only)
 
 The target of updated version is defined by the variable "VERSION".  
 The currently tested and supported upgrade target version is v3.0.38.
