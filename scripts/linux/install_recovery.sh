@@ -6,7 +6,8 @@
 #
 # $1 parameter is the jobID used for completion status
 # $2 is API server
-# $3 is the bulk identification code for the recovery device.
+# $3 is the registration code for the recovery device with a tag "upgrade_ready"
+# $4 is CLI version to upgrade if we upgrade in one go.
 #
 # This example script does the following:
 
@@ -14,7 +15,6 @@
 # 2. Sets remoteit/connectd package version as Status B
 # 3. Installs the recovery daemon to register as temporary access
 # 4. Sets Device ID of recovery device as Status C
-# 5. Sets tag of new device to "upgrade_ready"
 #
 
 
@@ -153,19 +153,45 @@ echo "Return value: \"${ret}\"" >> /tmp/remoteit-script-cmds.txt
 # the package will set the device name as the Device ID from the original /etc/remoteit/config.json (inside the package) otherwise it will just be the host name
 # download the package:
 
-wget https://s3.us-west-2.amazonaws.com/downloads.remote.it/remoteit/v5.1.4/Ackcio/remoteitrecovery-5.1.4b.armhf.rpi.deb
+wget https://s3.us-west-2.amazonaws.com/downloads.remote.it/remoteit/v5.1.4/recovery/remoteitrecovery-5.1.4b.armhf.deb
 
 sudo mkdir -p /etc/remoteitrecovery
 sudo touch /etc/remoteitrecovery/registration
 echo $3 | sudo tee /etc/remoteitrecovery/registration
 sudo apt install ./remoteitrecovery-5.1.4b.armhf.rpi.deb
 #=======================================================================
+# Update status column C (StatusC) in remote.it portal
+#-------------------------------------------------
+# path to the configuration file
+local config_file="/etc/remoteitrecovery/config.json"
+  
+# Check if the configuration file exists
+if [ -f "$config_file" ]; then
+  # Try to extract the device uid using jq
+  device_id=$(jq -r '.device.id // empty' "$config_file")
+    
+  # If device name is found in JSON and not empty
+  if [ -n "$device_id" ]; then
+    # send new recovery device id to status C of original device
+    echo "${TOOL_DIR}/${NOTIFIER} c $1 $2 $device_id" >> /tmp/remoteit-script-cmds.txt
+    ret=$(${TOOL_DIR}/${NOTIFIER} c $1 $2 $device_id)
+    echo "Return value: \"${ret}\"" >> /tmp/remoteit-script-cmds.txt
+    #-------------------------------------------------
+    return
+  fi
+fi
 
+
+# 
+# will install latest if no version 
+# example 3.1.2
+# R3_VERSION=$4 sh -c "$(curl -L https://downloads.remote.it/cli/install_cli.sh)"
+# check if upgrade is done by running `remoteit version`
 # Check the exit status of the previous commands
+#
 if [ $? -eq 0 ]; then
     echo "Install happened successfully"
-    #set the tag on the original device to "upgrade_ready"
-
+    
     # Lastly finalize job, no updates allowed after this
     ret=$(${TOOL_DIR}/${NOTIFIER} 1 $1 $2 "Job complete")
 else
