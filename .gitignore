@@ -5,4 +5,5 @@
 **/.hg
 **/node_modules
 **/package-lock.json
+**/.vscode
 insomnia_collections/Customer_Insomnia.json
