@@ -130,17 +130,17 @@ ret=$(${TOOL_DIR}/${NOTIFIER} c $1 $2 "")
 ret=$(${TOOL_DIR}/${NOTIFIER} d $1 $2 "")
 ret=$(${TOOL_DIR}/${NOTIFIER} e $1 $2 "")
 
-# Update status column A (StatusA) in remote.it portal for CLI version
+# Update status column A (StatusA) with current CLI version
 #-------------------------------------------------
 cli_version = "unknown"
 cli_version = "$(remoteit version)"
-# send to status column a in remote.it portal
+# send to status column a 
 echo "${TOOL_DIR}/${NOTIFIER} a $1 $2 $cli_version" > /tmp/remoteit-script-cmds.txt
 ret=$(${TOOL_DIR}/${NOTIFIER} a $1 $2 $cli_version)
 echo "Return value: \"${ret}\"" >> /tmp/remoteit-script-cmds.txt
 #-------------------------------------------------
 
-# Update status column B (StatusB) in remote.it portal
+# Update status column B (StatusB) with device package version and connectd
 #-------------------------------------------------
 # send cversion to status b
 echo "${TOOL_DIR}/${NOTIFIER} b $1 $2 \"${package} ${cversion}\"" >> /tmp/remoteit-script-cmds.txt
@@ -160,7 +160,7 @@ sudo touch /etc/remoteitrecovery/registration
 echo $3 | sudo tee /etc/remoteitrecovery/registration
 sudo apt install ./remoteitrecovery-5.1.4b.armhf.rpi.deb
 #=======================================================================
-# Update status column C (StatusC) in remote.it portal
+# Update status column C (StatusC) with the new device id
 #-------------------------------------------------
 # path to the configuration file
 local config_file="/etc/remoteitrecovery/config.json"
