@@ -23,7 +23,9 @@ Please note, permissions of authorization to fetch, update, connect, and view lo
  
 ## Using graphQL in an application (not in a query tool)
 
-[Authentication (Request Signing)](https://link.remote.it/docs/api/authentication) - You can use Insomnia to develop your queries and mutations as tests. Please note that you cannot use generated code out of Insomnia or any other query tool to port into your application or scripts. Each request is uniquely signed using elements such as the timestamp of the request and request body properties. The linked guide provides examples of the request signing portion for multiple languages.
+[Authentication (Request Signing)](https://link.remote.it/docs/api/authentication) - 
+You will need to use the insomnia-plugin-remoteit Plugin for Request signing. See the instructions in the [Insomnia setup](https://link.remote.it/docs/insomnia)
+You can use Insomnia to develop your queries and mutations as tests. Please note that you cannot use generated code out of Insomnia or any other query tool to port into your application or scripts. Each request is uniquely signed using elements such as the timestamp of the request and request body properties. The linked guide provides examples of the request signing portion for multiple languages.
 
 [Usage Guidelines](https://link.remote.it/docs/api/usage/overview) - Reference page with an overview of queries, mutations and pagination. Please note, polling for state change (online/offline) is highly discouraged. Use [webhooks](https://link.remote.it/docs/webhook-content) instead.
 
