@@ -1,4 +1,4 @@
-# Insomnia Collections
+# API Tool Collections
 
 This folder contains both Insomnia and Postman Collections of sample graphQL queries and mutations which can be imported into your Insomnia or Postman tool. Additional collections will be added from time to time as newer versions of the Remote.It graphQL API are released with newer functionality. 
 
