@@ -1,13 +1,15 @@
 #!/bin/bash
 
-Attribute() {
-    ATTRIBUTE_NAME="$1"
-    ATTRIBUTE_VALUE="$2"
+# Function to set an attribute on the device
+set_attribute() {
+    local name="$1"
+    local value="$2"
 
     # Send the data to the API, including jobDeviceId and attributeName in the URL
-    curl -X POST "https://${GRAPHQL_API_PATH}/job/attribute/$JOB_DEVICE_ID/$ATTRIBUTE_NAME" \
+    curl -X POST "https://${GRAPHQL_API_PATH}/job/attribute/${JOB_DEVICE_ID}/${name}" \
          -H "Content-Type: text/plain" \
-         --data "$ATTRIBUTE_VALUE"
+         --data "${value}"
 }
 
-Attribute hostname "$(hostname)"
+# Create and set a hostname attribute
+set_attribute "hostname" "$(hostname)"
