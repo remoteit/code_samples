@@ -10,5 +10,4 @@ Attribute() {
          --data "$ATTRIBUTE_VALUE"
 }
 
-Attribute hello "world"
 Attribute hostname "$(hostname)"
