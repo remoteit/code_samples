@@ -1,3 +1,9 @@
+# remote.it Example Script
+# This has examples of the following (typically you will not being doing all of these at the same time):
+# * graphQL mutations for Attributes (general attributes are displayed on the device detail page)
+# * Setting Status columns with values that can be viewed in the portal and desktop applications
+# * Has examples of usage of Environment variables
+#
 # This script first clears all the attributes for the device (diskfree, fwversion, uptime, vmstat, shell).
 # Next, it collects specific system values from a device and sets them as attributes.
 #
@@ -39,6 +45,7 @@ function Set-Attribute {
 }
 
 # A Function to set a single status (statusA, statusB, statusC, etc.)
+# Status columns can be displayed on the device list
 # $statusLetter = status letter (e.g., 'a')
 # $statusValue = status value (e.g., 'some value')
 function Set-Status {

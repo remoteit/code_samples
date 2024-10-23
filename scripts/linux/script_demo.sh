@@ -1,4 +1,6 @@
 #!/bin/bash
+# The above line should be the shell you wish to execute this script
+# and will only work on devices which can run bash scripts
 
 # Function to set an attribute on the device
 set_attribute() {
