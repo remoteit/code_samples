@@ -5,22 +5,16 @@
 # VERSION="2.0.1"
 # MODIFIED="Nov 14, 2024"
 
-# remote.it Example Script
-# This has examples of the following (typically you will not being doing all of these at the same time):
-# * Setting Status columns with values that can be viewed in the portal and desktop applications
+# remote.it Example Script for setting Status A-E
+
+# Status A = Free disk space, listed by partition
+# Status B = Linux version info from uname -a
+# Status C = System uptime since last boot
+# Status D = List of all running processes
+# Status E = Shell version
 #
-# This script first clears all the attributes for the device (diskfree, fwversion, uptime, vmstat, shell).
-# Next, it collects specific system values from a device and sets them as attributes.
 #
-# Attribute diskfree = Free disk space, listed by partition
-# Attribute fwversion = Linux version info from uname -a
-# Attribute uptime = System uptime since last boot
-# Attribute vmstat = List of all running processes
-# Attribute shell = Shell version
-#
-# Finally, it sets the status fields with these values
-#
-# These enivronment Variables are available to the script:
+# These environment Variables are available to the script:
 # JOB_DEVICE_ID - The job device ID of the device being managed
 # GRAPHQL_API_PATH - The GraphQL API path to the remote.it api server
 
