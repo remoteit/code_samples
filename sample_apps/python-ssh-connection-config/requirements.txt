@@ -1,0 +1,3 @@
+configparser
+pyyaml
+requests-http-signature==v0.1.0
