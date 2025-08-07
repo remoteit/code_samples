@@ -1,0 +1,15 @@
+/Users/brendastrech/git/code_samples/api_tools/API_usage_examples/RemoteItClient/bin/Debug/net9.0/RemoteItClient
+/Users/brendastrech/git/code_samples/api_tools/API_usage_examples/RemoteItClient/bin/Debug/net9.0/RemoteItClient.deps.json
+/Users/brendastrech/git/code_samples/api_tools/API_usage_examples/RemoteItClient/bin/Debug/net9.0/RemoteItClient.runtimeconfig.json
+/Users/brendastrech/git/code_samples/api_tools/API_usage_examples/RemoteItClient/bin/Debug/net9.0/RemoteItClient.dll
+/Users/brendastrech/git/code_samples/api_tools/API_usage_examples/RemoteItClient/bin/Debug/net9.0/RemoteItClient.pdb
+/Users/brendastrech/git/code_samples/api_tools/API_usage_examples/RemoteItClient/obj/Debug/net9.0/RemoteItClient.GeneratedMSBuildEditorConfig.editorconfig
+/Users/brendastrech/git/code_samples/api_tools/API_usage_examples/RemoteItClient/obj/Debug/net9.0/RemoteItClient.AssemblyInfoInputs.cache
+/Users/brendastrech/git/code_samples/api_tools/API_usage_examples/RemoteItClient/obj/Debug/net9.0/RemoteItClient.AssemblyInfo.cs
+/Users/brendastrech/git/code_samples/api_tools/API_usage_examples/RemoteItClient/obj/Debug/net9.0/RemoteItClient.csproj.CoreCompileInputs.cache
+/Users/brendastrech/git/code_samples/api_tools/API_usage_examples/RemoteItClient/obj/Debug/net9.0/RemoteItClient.sourcelink.json
+/Users/brendastrech/git/code_samples/api_tools/API_usage_examples/RemoteItClient/obj/Debug/net9.0/RemoteItClient.dll
+/Users/brendastrech/git/code_samples/api_tools/API_usage_examples/RemoteItClient/obj/Debug/net9.0/refint/RemoteItClient.dll
+/Users/brendastrech/git/code_samples/api_tools/API_usage_examples/RemoteItClient/obj/Debug/net9.0/RemoteItClient.pdb
+/Users/brendastrech/git/code_samples/api_tools/API_usage_examples/RemoteItClient/obj/Debug/net9.0/RemoteItClient.genruntimeconfig.cache
+/Users/brendastrech/git/code_samples/api_tools/API_usage_examples/RemoteItClient/obj/Debug/net9.0/ref/RemoteItClient.dll

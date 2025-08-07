@@ -1,0 +1,35 @@
+Using ACCESS_KEY_ID: LDQJKWVZWPYK3UNHFNBG
+Using encoded SECRET_ACCESS_KEY
+Secret successfully base64 decoded
+URL: https://api.remote.it/graphql/v1
+Method: POST
+Content-Type: application/json
+Lowercase verb: post
+Date: Fri, 07 Mar 2025 20:10:14 G3T
+Data: { "query": "{ login { email  devices (size: 1000, from: 0) { items { id name services { id name} } } } }" }
+===== SIGNING STRING =====
+(request-target): post /graphql/v1
+host: api.remote.it
+date: Fri, 07 Mar 2025 20:10:14 G3T
+content-type: application/json
+Signature: DxwkOUCF+JFpImVegrvdFYN5+HWT44f5a0vzEUk6EiY=
+Authorization: Signature keyId="LDQJKWVZWPYK3UNHFNBG",algorithm="hmac-sha256",headers="(request-target) host date content-type",signature="DxwkOUCF+JFpImVegrvdFYN5+HWT44f5a0vzEUk6EiY="
+Sending request...
+Response status: 403 Forbidden
+Response body:
+{"message":"Forbidden"}
+Request failed. Dumping additional debug info:
+  Connection: keep-alive
+  Date: Fri, 07 Mar 2025 20:10:15 GMT
+  apigw-requestid: HEnaKjzyyK4EJFQ=
+  X-Cache: Error from cloudfront
+  Via: 1.1 9a448e42428e8683fe0fc64dff7a7112.cloudfront.net (CloudFront)
+  X-Amz-Cf-Pop: SFO53-P7
+  X-Amz-Cf-Id: 4ftH0x4sqltpd5iblsqkhR1oLVSp304c_3Ckl-Vru_1wE2yJbHS_uA==
+
+Curl command for manual testing:
+curl -v -X POST \
+  -H "Authorization:Signature keyId="LDQJKWVZWPYK3UNHFNBG",algorithm="hmac-sha256",headers="(request-target) host date content-type",signature="DxwkOUCF+JFpImVegrvdFYN5+HWT44f5a0vzEUk6EiY="" \
+  -H "Date:Fri, 07 Mar 2025 20:10:14 G3T" \
+  -H "Content-Type:application/json" \
+  https://api.remote.it/graphql/v1 -d '{ "query": "{ login { email  devices (size: 1000, from: 0) { items { id name services { id name} } } } }" }' --insecure
